@@ -1,5 +1,5 @@
 /* src/index.css */
 @import "tailwindcss";
-
+@custom-variant dark (&:where(.dark, .dark *));
 /* ここから下は “通常のCSS” でOK（@applyは使わない） */
 :root { color-scheme: light; }
