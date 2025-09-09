@@ -6,4 +6,7 @@ const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<App />);
 
 // Reactが描画できたらスプラッシュを外す
-const s = document.getElementById("splash"); if (s) s.style.display = "none";
+requestAnimationFrame(() => {
+  const splash = document.getElementById("splash");
+  if (splash) splash.remove();
+});
