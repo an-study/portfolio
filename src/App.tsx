@@ -9,7 +9,7 @@ import { useEffect } from "react";
 function Footer() {
   return (
     <footer className="text-center text-xs text-slate-500 py-10 border-t border-slate-200">
-      © {new Date().getFullYear()} A.N All rights reserved.
+   © {new Date().getFullYear()} A.N Portfolio (Test)
     </footer>
   );
 }
