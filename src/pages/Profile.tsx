@@ -127,7 +127,7 @@ const Timeline = () => {
           return (
             <div key={g.year} className="relative">
               {/* === 年ラベル（中央） === */}
-              <div className="flex justify-center">
+              <div className="flex justify-start md:justify-center pl-2 md:pl-0">
                 <span
                   className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold shadow-sm
                              bg-white text-slate-700 dark:text-slate-200 dark:bg-slate-900"
