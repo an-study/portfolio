@@ -1,13 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter } from "react-router-dom";
 import App from "./App";
-import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </React.StrictMode>
-);
+const root = ReactDOM.createRoot(document.getElementById("root")!);
+root.render(<App />);
+
+// Reactが描画できたらスプラッシュを外す
+const s = document.getElementById("splash"); if (s) s.style.display = "none";
