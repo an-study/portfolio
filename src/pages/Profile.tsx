@@ -127,19 +127,16 @@ const Timeline = () => {
           return (
             <div key={g.year} className="relative w-full">
               {/* === 年ラベル（中央） === */}
-              <div className="flex justify-start md:justify-center pl-2 md:pl-0">
-                <span
-                  className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold shadow-sm
-                             bg-white text-slate-700 dark:text-slate-200 dark:bg-slate-900"
-                  style={{ borderColor: accent }}
-                >
-                  <span
-                    className="inline-block h-2 w-2 rounded-full"
-                    style={{ backgroundColor: accent }}
-                  />
-                  {g.year}
-                </span>
-              </div>
+  <div className="pl-2 md:pl-0">
+  <span
+    className="block w-fit ml-0 md:mx-auto inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold shadow-sm
+               bg-white text-slate-700 dark:text-slate-200 dark:bg-slate-900"
+    style={{ borderColor: accent }}
+  >
+    <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: accent }} />
+    {g.year}
+  </span>
+</div>
 
               {/* === 同年のカード群（左右交互） === */}
               <div className="mt-5 space-y-6">
