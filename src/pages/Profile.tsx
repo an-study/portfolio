@@ -118,7 +118,7 @@ const Timeline = () => {
   const groups = useMemo(() => groupByYear(PROJECTS), []);
   return (
     <div className="relative">
-      {/* 中央スパイ */}
+      {/* 中央揃え */}
       <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200" />
 
       <div className="space-y-10">
