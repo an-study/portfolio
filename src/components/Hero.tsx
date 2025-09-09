@@ -38,7 +38,7 @@ const PROFILE = {
   name: "A.N",
   title: "PdM / UX Designer",
   summary:
-    "WebデザイナーからUI / UX デザイナーを経てPdMへキャリア転身。主に業務システムの開発に関わり、現在は社内システムのUX設計・要件定義を推進。業務効率と価値創出の実現を目標にプロジェクトを推進しています。PMP®︎とHCDスペシャリスト資格保有。AIを活用し独自サービスの開発も行っています。",
+    "WebデザイナーからUI / UX デザイナーを経てPdMへキャリア転身。主に業務システムの開発に関わり、現在は社内システムのUX設計・要件定義を推進。業務効率と価値創出の実現を目標にプロジェクトを推進しています。PMP®︎とHCDスペシャリスト資格保有。AIを活用し独自サービスの開発も行っています！",
   links: [
     { label: "note", href: "https://note.com/nishigaki_ao", icon: "icons/note.svg" },
     { label: "X", href: "https://x.com/your_account", icon: "icons/x.svg" },
