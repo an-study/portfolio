@@ -125,7 +125,7 @@ const Timeline = () => {
         {groups.map((g, gi) => {
           const accent = getAccent(gi); // ← 年単位のカラー
           return (
-            <div key={g.year} className="relative">
+            <div key={g.year} className="relative w-full">
               {/* === 年ラベル（中央） === */}
               <div className="flex justify-start md:justify-center pl-2 md:pl-0">
                 <span
