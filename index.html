@@ -1,17 +1,33 @@
-<body>
-  <div id="splash" style="
-    position:fixed;inset:0;display:grid;place-items:center;
-    background:linear-gradient(180deg,#f8fafc,#ffffff);color:#0f172a;
-    font-family: ui-sans-serif,system-ui; z-index:9999;">
-    <div style="display:flex;align-items:center;gap:.75rem;">
-      <div style="width:14px;height:14px;border-radius:50%;
-                  border:2px solid #0f172a;border-top-color:transparent;
-                  animation:spin 1s linear infinite"></div>
-      <span>Loading…</span>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A.N Portfolio</title>
+  </head>
+  <body>
+    <!-- ✅ スプラッシュ画面（root の外に配置） -->
+    <div id="splash" style="
+      position:fixed;inset:0;display:grid;place-items:center;
+      background:#ffffff;color:#0f172a;font-family:ui-sans-serif,system-ui;
+      z-index:9999;">
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div style="width:14px;height:14px;border-radius:50%;
+                    border:2px solid #0f172a;border-top-color:transparent;
+                    animation:spin 1s linear infinite"></div>
+        <span>Loading…</span>
+      </div>
     </div>
-  </div>
-  <div id="root"></div>
-  <style>
-    @keyframes spin {to { transform: rotate(360deg); }}
-  </style>
-</body>
+
+    <!-- React が描画する領域 -->
+    <div id="root"></div>
+
+    <!-- スピンアニメーション -->
+    <style>
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
