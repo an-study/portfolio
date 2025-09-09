@@ -6,6 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A.N Portfolio</title>
   </head>
+  <!-- App がマウントしたらスプラッシュを消す -->
+<script>
+  (function () {
+    function hideSplash() {
+      const s = document.getElementById("splash");
+      if (s) s.remove();
+    }
+    // App.tsx からの通知を受け取る（1回だけ）
+    window.addEventListener("app:mounted", hideSplash, { once: true });
+
+    // 念のためのフォールバック：8秒経過しても消えない時のメモ
+    setTimeout(() => {
+      const s = document.getElementById("splash");
+      if (s && !s.dataset.note) {
+        s.dataset.note = "1";
+        const note = document.createElement("div");
+        note.textContent = "Still loading… Please reload if this persists.";
+        note.style = "margin-top:12px;font-size:12px;color:#64748b";
+        s.firstElementChild?.appendChild(note);
+      }
+    }, 8000);
+  })();
+</script>
+
+<!-- 画面下に簡易エラーバナー（スマホでも見える） -->
+<script>
+  window.addEventListener("error", function (e) {
+    const m = document.createElement("div");
+    m.style =
+      "position:fixed;left:8px;right:8px;bottom:8px;padding:10px 12px;z-index:99999;" +
+      "background:#fee2e2;color:#991b1b;border:1px solid #fecaca;border-radius:10px;" +
+      "font:12px/1.4 ui-sans-serif,system-ui;box-shadow:0 6px 18px rgba(0,0,0,.12)";
+    m.textContent = "Runtime error: " + (e.error?.message || e.message || "unknown");
+    document.body.appendChild(m);
+  });
+</script>
+  
+  
   <body>
     <!-- ✅ スプラッシュ画面（root の外に配置） -->
     <div id="splash" style="
