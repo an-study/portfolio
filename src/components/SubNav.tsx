@@ -42,7 +42,7 @@ export function SubNav() {
         <nav className="flex gap-2 py-2">
 
 
-// 変更点：to="/" → to=""（ルート相対）、to="/gallery" → "gallery"
+
 {renderTab("", "Skills", true)}
 {renderTab("gallery", "Job Gallery")}
 
