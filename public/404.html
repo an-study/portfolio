@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>404</title>
+    <script>
+      /* GitHub Project Pages向けフォールバック
+         例: /portfolio/gallery → /portfolio/?/gallery へ搬送し index.html に戻す */
+      var segmentCount = 1; // "/portfolio" の分だけ確保（User/Org Pagesなら 0）
+      var l = window.location;
+      var base = l.pathname.split('/').slice(0, segmentCount + 1).join('/');
+      var newPath = l.pathname.slice(base.length);
+      l.replace(base + '/?/' + newPath + l.search + l.hash);
+    </script>
+  </head>
+  <body></body>
+</html>

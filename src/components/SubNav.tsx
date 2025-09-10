@@ -40,8 +40,12 @@ export function SubNav() {
                     sticky top-0 z-30">
       <div className="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-center">
         <nav className="flex gap-2 py-2">
-          {renderTab("/", "Skills", true)}
-          {renderTab("/gallery", "Job Gallery")}
+
+
+// 変更点：to="/" → to=""（ルート相対）、to="/gallery" → "gallery"
+{renderTab("", "Skills", true)}
+{renderTab("gallery", "Job Gallery")}
+
         </nav>
       </div>
     </div>

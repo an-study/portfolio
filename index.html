@@ -43,6 +43,19 @@
   });
 </script>
   
+<script>
+  // 404.html から '?/path' 形式で戻ってきたURLを、元のパスに復元
+  (function() {
+    var l = window.location;
+    if (l.search.slice(1).startsWith('/')) {
+      var decoded = l.search.slice(1).split('&')
+        .map(function(s){ return s.replace(/~and~/g, '&'); })
+        .join('?');
+      window.history.replaceState(null, null, decoded + l.hash);
+    }
+  })();
+</script>
+
   
   <body>
     <!-- ✅ スプラッシュ画面（root の外に配置） -->
