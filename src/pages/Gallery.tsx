@@ -145,7 +145,7 @@ export default function Gallery() {
                       ) : (
                         // Motion（ここに“動くキャラ”）
                         <div className="h-full w-full p-4">
-                          <AnimatedCharacter />
+                        <AnimatedCharacter className="w-full h-full text-slate-700 dark:text-slate-200" />
                         </div>
                       )}
                     </div>
