@@ -4,7 +4,8 @@ import { Chip } from "../components/Chip";
 import { Monitor, Image as ImageIcon, ExternalLink, X, PlayCircle } from "lucide-react";
 import { TogglePills } from "../components/TogglePills";
 import { motion, AnimatePresence } from "framer-motion";
-import AnimatedCharacter from "../components/AnimatedCharacter";
+import { resolveMotionComponent } from "../components/motion/registry";
+import { GALLERY_ITEMS, type IllustItem, type SystemItem, type MotionItem } from "../data/gallery";
 
 /** 画像パス -> 絶対URL（GitHub Pages /portfolio/ 対応） */
 const asset = (p: string) => {
@@ -13,24 +14,7 @@ const asset = (p: string) => {
   return new URL(clean, window.location.origin + base).toString();
 };
 
-/** データ型 */
-type IllustItem = { kind: "illust"; title: string; thumb: string; tags: string[]; href: string };
-type SystemItem = { kind: "system"; title: string; desc: string; href: string; tags?: string[]; thumb?: string };
-type MotionItem = { kind: "motion"; title: string; desc?: string; tags?: string[] };
-type Item = IllustItem | SystemItem | MotionItem;
-
-/** サンプルデータ */
-const ITEMS: Item[] = [
-  { kind: "illust", title: "Playful Bird", thumb: "illust/sample-01.jpg", tags: ["AI Illustration","Character"], href: "illust/sample-01.jpg" },
-  { kind: "illust", title: "Night City",   thumb: "illust/sample-02.jpg", tags: ["AI Illustration","Background"], href: "illust/sample-02.jpg" },
-
-  // ← ここが “動くイラスト（Lottie風）”
-  { kind: "motion", title: "Animated Character", desc: "Framer Motion / SVG Animated Face", tags: ["Motion","SVG"] },
-
-  { kind: "system", title: "Team ToDo Board", desc: "Drag & drop Kanban for quick progress sharing.", href: "https://example.com/app2", tags: ["Tool"] },
-  // サンプル画像がなければ thumb は省略OK（プレースホルダ表示）
-  { kind: "system", title: "Attendance Visualizer", desc: "Lightweight UI to share office/WFH schedule.", href: "https://example.com/app1", tags: ["Internal"], thumb: "illust/sample-03.jpg" },
-];
+/** データは ../data/gallery へ分離 */
 
 /** セクション */
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -53,8 +37,8 @@ export default function Gallery() {
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
 
   const filtered = useMemo(() => {
-    if (tab === "all") return ITEMS;
-    return ITEMS.filter((it) => it.kind === tab);
+    if (tab === "all") return GALLERY_ITEMS;
+    return GALLERY_ITEMS.filter((it) => it.kind === tab);
   }, [tab]);
 
   const openLightbox = (src: string, title: string) => setLightbox({ src, title });
@@ -142,9 +126,13 @@ export default function Gallery() {
                           </div>
                         )
                       ) : (
-                        // Motion（ここに“動くキャラ”）
+                        // Motion（アニメ種別をデータで切り替え）
                         <div className="h-full w-full p-4">
-                        <AnimatedCharacter className="w-full h-full text-slate-700 dark:text-slate-200" />
+                          {(() => {
+                            const m = it as MotionItem;
+                            const Comp = resolveMotionComponent(m.anim);
+                            return <Comp className="w-full h-full text-slate-700 dark:text-slate-200" />;
+                          })()}
                         </div>
                       )}
                     </div>
