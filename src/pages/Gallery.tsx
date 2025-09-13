@@ -8,7 +8,7 @@ import AnimatedCharacter from "../components/AnimatedCharacter";
 
 /** 画像パス -> 絶対URL（GitHub Pages /portfolio/ 対応） */
 const asset = (p: string) => {
-  const base = (import.meta as any).env?.BASE_URL || "/";
+  const base = import.meta.env.BASE_URL || "/";
   const clean = p.startsWith("/") ? p.slice(1) : p;
   return new URL(clean, window.location.origin + base).toString();
 };
@@ -83,7 +83,6 @@ export default function Gallery() {
             {filtered.map((it, i) => {
               const isIllust = it.kind === "illust";
               const isSystem = it.kind === "system";
-              const isMotion = it.kind === "motion";
 
               const thumbSrc =
                 isIllust

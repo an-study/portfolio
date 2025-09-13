@@ -5,7 +5,7 @@ import { PROFILE } from "../data/profile";
 
 // アセットのURLを解決（Viteのbase対応）
 const asset = (p: string) => {
-  const base = (import.meta as any).env?.BASE_URL || "/";
+  const base = import.meta.env.BASE_URL || "/";
   const clean = p.startsWith("/") ? p.slice(1) : p;
   return new URL(clean, window.location.origin + base).toString();
 };

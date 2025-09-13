@@ -51,7 +51,9 @@
       var decoded = l.search.slice(1).split('&')
         .map(function(s){ return s.replace(/~and~/g, '&'); })
         .join('?');
-      window.history.replaceState(null, null, decoded + l.hash);
+      // 例: pathname '/portfolio/' + decoded '/gallery' → '/portfolio/gallery'
+      var base = l.pathname.replace(/\/$/, '');
+      window.history.replaceState(null, null, base + decoded + l.hash);
     }
   })();
 </script>
