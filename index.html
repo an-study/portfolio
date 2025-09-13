@@ -2,16 +2,96 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/portfolio/vite.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Multi-favicon setup (under /favicon) -->
+    <link rel="icon" type="image/svg+xml" href="/portfolio/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/portfolio/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/portfolio/favicon/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/portfolio/favicon/favicon.ico" />
+    <link rel="mask-icon" href="/portfolio/favicon/safari-pinned-tab.svg" color="#0f172a" />
+    <link rel="manifest" href="/portfolio/favicon/site.webmanifest" />
+    <!-- iOS homescreen icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/portfolio/favicon/favicon-180x180.png" />
+    <meta name="msapplication-TileColor" content="#0f172a" />
+    <meta name="theme-color" content="#0f172a" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-    <script type="module" crossorigin src="/portfolio/assets/index-5pdcBl1R.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-BsQopvdy.css">
+    <title>A.N Portfolio</title>
+    <script type="module" crossorigin src="/portfolio/assets/index-BTnMZknj.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-oTSwqGOH.css">
   </head>
+  <!-- App がマウントしたらスプラッシュを消す -->
+<script>
+  (function () {
+    function hideSplash() {
+      const s = document.getElementById("splash");
+      if (s) s.remove();
+    }
+    // App.tsx からの通知を受け取る（1回だけ）
+    window.addEventListener("app:mounted", hideSplash, { once: true });
+
+    // 念のためのフォールバック：8秒経過しても消えない時のメモ
+    setTimeout(() => {
+      const s = document.getElementById("splash");
+      if (s && !s.dataset.note) {
+        s.dataset.note = "1";
+        const note = document.createElement("div");
+        note.textContent = "Still loading… Please reload if this persists.";
+        note.style = "margin-top:12px;font-size:12px;color:#64748b";
+        s.firstElementChild?.appendChild(note);
+      }
+    }, 8000);
+  })();
+</script>
+
+<!-- 画面下に簡易エラーバナー（スマホでも見える） -->
+<script>
+  window.addEventListener("error", function (e) {
+    const m = document.createElement("div");
+    m.style =
+      "position:fixed;left:8px;right:8px;bottom:8px;padding:10px 12px;z-index:99999;" +
+      "background:#fee2e2;color:#991b1b;border:1px solid #fecaca;border-radius:10px;" +
+      "font:12px/1.4 ui-sans-serif,system-ui;box-shadow:0 6px 18px rgba(0,0,0,.12)";
+    m.textContent = "Runtime error: " + (e.error?.message || e.message || "unknown");
+    document.body.appendChild(m);
+  });
+</script>
+  
+<script>
+  // 404.html から '?/path' 形式で戻ってきたURLを、元のパスに復元
+  (function() {
+    var l = window.location;
+    if (l.search.slice(1).startsWith('/')) {
+      var decoded = l.search.slice(1).split('&')
+        .map(function(s){ return s.replace(/~and~/g, '&'); })
+        .join('?');
+      // 例: pathname '/portfolio/' + decoded '/gallery' → '/portfolio/gallery'
+      var base = l.pathname.replace(/\/$/, '');
+      window.history.replaceState(null, null, base + decoded + l.hash);
+    }
+  })();
+</script>
+
+  
   <body>
+    <!-- ✅ スプラッシュ画面（root の外に配置） -->
+    <div id="splash" style="
+      position:fixed;inset:0;display:grid;place-items:center;
+      background:#ffffff;color:#0f172a;font-family:ui-sans-serif,system-ui;
+      z-index:9999;">
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div style="width:14px;height:14px;border-radius:50%;
+                    border:2px solid #0f172a;border-top-color:transparent;
+                    animation:spin 1s linear infinite"></div>
+        <span>Loading…</span>
+      </div>
+    </div>
+
+    <!-- React が描画する領域 -->
     <div id="root"></div>
+
+    <!-- スピンアニメーション -->
+    <style>
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+
   </body>
 </html>
