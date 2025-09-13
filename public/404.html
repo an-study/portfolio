@@ -9,7 +9,9 @@
       var segmentCount = 1; // "/portfolio" の分だけ確保（User/Org Pagesなら 0）
       var l = window.location;
       var base = l.pathname.split('/').slice(0, segmentCount + 1).join('/');
-      var newPath = l.pathname.slice(base.length);
+      // 先頭のスラッシュを取り除いて二重スラッシュ '/?//...'
+      // にならないようにする
+      var newPath = l.pathname.slice(base.length).replace(/^\/+/, '');
       l.replace(base + '/?/' + newPath + l.search + l.hash);
     </script>
   </head>
