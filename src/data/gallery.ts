@@ -39,7 +39,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   // Motion (animated example rendered in the card)
   { kind: "motion", title: "Animated Character", desc: "Framer Motion / SVG Animated Face", tags: ["Motion","SVG"], anim: "character" },
   { kind: "motion", title: "Animated Bars", desc: "Framer Motion / SVG Animated Face", tags: ["Motion","SVG"], anim: "bars" },
-  { kind: "motion", title: "Animated Logo", desc: "Framer Motion / SVG Animated Face", tags: ["Motion","SVG"], anim: "logo" },
+  { kind: "motion", title: "Animated Profile Blink", desc: "Profile blink", tags: ["Motion","SVG"], anim: "profileBlink" },
 
   { kind: "system", title: "Team ToDo Board", desc: "Drag & drop Kanban for quick progress sharing.", href: "https://example.com/app2", tags: ["Tool"] },
   // thumb can be omitted; a placeholder will be shown

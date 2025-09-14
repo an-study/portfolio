@@ -16,6 +16,15 @@ const toKey = (path: string) => {
     .replace(/^-+/, "");
 };
 
+// Normalize external names (data keys) into the same kebab-case space
+const normalizeKey = (name?: string) =>
+  (name ?? "character")
+    .replace(/^animated/i, "")
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .replace(/[_\s]+/g, "-")
+    .toLowerCase()
+    .replace(/^-+/, "");
+
 const registry: Record<string, React.LazyExoticComponent<MotionComponent>> = {};
 for (const [path, loader] of Object.entries(modules)) {
   const key = toKey(path);
@@ -27,7 +36,7 @@ for (const [path, loader] of Object.entries(modules)) {
 }
 
 export function resolveMotionComponent(name?: string) {
-  const key = (name ?? "character").toLowerCase();
+  const key = normalizeKey(name);
   const Comp = registry[key] ?? registry["character"] ?? lazy(() => import("./AnimatedCharacter"));
   return Comp;
 }

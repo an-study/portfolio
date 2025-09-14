@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
 import { asset, loadLottie } from "./lottie";
 
-export default function AnimatedLogo({ className }: { className?: string }) {
+export default function AnimatedProfileBlink({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const reduce = useReducedMotion();
 
