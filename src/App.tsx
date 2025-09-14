@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Profile from "./pages/Profile";
-import Gallery from "./pages/Gallery";
+import { lazy, Suspense, useEffect } from "react";
+const Profile = lazy(() => import("./pages/Profile"));
+const Gallery = lazy(() => import("./pages/Gallery"));
 import { Hero } from "./components/Hero";
 import { SubNav } from "./components/SubNav";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
-import { useEffect } from "react";
 
 function Footer() {
   return (
@@ -30,10 +30,12 @@ export default function App() {
       <SubNav />
 
       <main>
-        <Routes>
-          <Route path="/" element={<Profile />} />
-          <Route path="/gallery" element={<Gallery />} />
-        </Routes>
+        <Suspense fallback={<div className="p-6 text-sm text-slate-500">Loading…</div>}>
+          <Routes>
+            <Route path="/" element={<Profile />} />
+            <Route path="/gallery" element={<Gallery />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <Footer />
