@@ -9,11 +9,11 @@ export type Project = {
 export const PROJECTS: Project[] = [
     { 
     date: "2025-10", 
-    title: "台帳管理システム構築", 
+    title: "マスタ管理システム構築", 
     role: "PM / ディレクション",
     impact: [
-      "社内の台帳作成、管理業務を効率化し、データの一元管理とリアルタイム更新を目標にプロジェクトを推進中",
-      "業務プロセスの可視化と改善を通じて、台帳管理の正確性と効率性を向上させることを目指す",
+      "社内のマスタ作成、管理業務を効率化し、データの一元管理とリアルタイム更新を目標にプロジェクトを推進中",
+      "業務プロセスの可視化と改善を通じて、マスタ管理の正確性と効率性を向上させることを目指す",
       "委託先との連携を強化し、要件定義から導入までの全工程の進行を管理し進行中",
     ],
     tags: ["Waterfall", "PM", "見積もり","ディレクション","Confulence","Jira","Figma","Figjam","gitHub"] 
@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
       "PMP資格取得",
       "HCDスペシャリスト資格取得"
     ],
-    tags: ["Agile", "HCD", "PM", "UI/UX","上下下位分析","アクセスログ","Confulence","Jira","Figma","Figjam"] 
+    tags: ["Agile", "HCD", "PM", "UI/UX","上位下位分析","アクセスログ","Confulence","Jira","Figma","Figjam"] 
   },
   { 
     date: "2024-07", 
@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
       "紙やエクセルに分散していたデータを一元管理し、後続業務で再利用可能なデータとして整備",
       "Figmaでのプロトタイプを活用し、頻繁な要件変更への視覚的な合意形成を達成"
     ],
-    tags: ["Agile", "HCD", "PM", "UX Design", "Event Storming"] 
+    tags: ["Agile", "HCD", "PM", "UX Design", "Event Storming","Figjam"] 
   },
   { 
     date: "2024-04", 
@@ -90,15 +90,15 @@ export const PROJECTS: Project[] = [
       "ユーザー調査（行動観察）やプロトタイプレビューのHCDステップをプロジェクトに導入・継続的な取り組みとした",
       "アジャイル手法を採用し、スプリント単位での段階的な成果物提供計画を立案・実行"
     ],
-    tags: ["Agile", "HCD", "UI Design", "Prototyping", "User Research"] 
+    tags: ["Agile", "HCD", "UI Design", "Prototyping", "User Research","XD","Miro"] 
   },
   { 
     date: "2019-07", 
     title: "デザインチームの設立と体制構築", 
     role: "Team Founder / Design Lead",
     impact: [
-      "『デザインのポジションを作る』目標を掲げ、協力会社社員2名を採用し、2019年7月29日に3名体制のデザインチームを設立", 
-      "その後メンバー増員を進め、10月からは7名体制での運用を実現",
+      "『デザインのポジションを作る』目標を掲げ、外部パートナーを採用し、2019年7月29日に3名体制のデザインチームを設立", 
+      "その後メンバー増員を進め、短期間でチーム体制を拡充",
       "デザイン業務の稼働時間を細分化・可視化する活動を実施",
       "社外へのデザイン情報発信を推進し、デザイン研修の提案・実施を実現",
       "デザインで売り上げを上げることを目標に掲げ、社内でのデザイン認知度向上とデザイン提案を促進",
