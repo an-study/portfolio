@@ -206,16 +206,16 @@ export default function Profile() {
     <>
       <Section id="skills" title="Skills">
         <div className="grid md:grid-cols-2 gap-8 items-start">
-          <Card title="レーダーチャート（大分類）">
+          <Card title="">
             <SkillRadar />
           </Card>
-          <Card title="レベルバー（詳細項目）">
+          <Card title="">
             <SkillBars />
           </Card>
         </div>
       </Section>
 
-      <Section id="roadmap" title="Career Timeline">
+      <Section id="roadmap" title="Career Highlights">
         <Timeline />
       </Section>
     </>
